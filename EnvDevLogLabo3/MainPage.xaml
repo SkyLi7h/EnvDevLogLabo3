@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="EnvDevLogLabo3.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnvDevLogLabo3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Contact's list" FontSize="32" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,3,0,589"/>
+        <Grid HorizontalAlignment="Left" Height="579" Margin="0,51,0,0" VerticalAlignment="Top" Width="192">
+            <ListView ItemsSource="{Binding}" Name="Contacts" Margin="0,0,10,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LastName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="581" Margin="192,49,0,0" VerticalAlignment="Top" Width="168">
+            <StackPanel Orientation="Vertical" DataContext="{Binding ElementName=Contacts,Path=SelectedItem}" Margin="0,10,0,0">
+                <TextBlock Text="{Binding FirstName}"/>
+                <TextBlock Text="{Binding Email}"/>
+                <TextBlock Text="{Binding LastName}"/>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+</Page>
